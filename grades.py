@@ -41,19 +41,15 @@ def get_scores():
     scores = {}
     print("과목별 점수를 입력하세요 (0~100).\n")
     
+def print_result(scores, average):
+    print("\n" + "=" * 30)
+    print("      성적 결과")
+    print("=" * 30)
     for subject in SUBJECTS:
-        while True:
-            try:
-                score = float(input(f"{subject} 점수: "))
-                if 0 <= score <= 100:
-                    scores[subject] = score
-                    break
-                else:
-                    print(" -> 0에서 100 사이의 점수를 입력하세요.")
-            except ValueError:
-                print(" -> 숫자를 입력하세요.")
-                
-    return scores
+        print(f"{subject:<10} {scores[subject]:>6.1f}점")
+    print("-" * 30)
+    print(f"{'평균':<10} {average:>6.1f}점")
+    print("=" * 30)
 
 def calculate_average(scores):
     """점수 딕셔너리를 받아 평균을 반환한다."""
